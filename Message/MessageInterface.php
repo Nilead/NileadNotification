@@ -34,31 +34,6 @@ interface MessageInterface
     public function setId($id);
 
     /**
-     * Gets the message firstName.
-     *
-     * @return string
-     */
-    public function getFirstName();
-
-    /**
-     *
-     * @param $firstName
-     */
-    public function setFirstName($firstName);
-
-    /**
-     * Gets the message LastName
-     *
-     * @return string
-     */
-    public function getLastName();
-
-    /**
-     * @param $lastName
-     */
-    public function setLastName($lastName);
-
-    /**
      * Set sendFrom addresses.
      *
      * $from can be either a string or an array

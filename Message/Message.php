@@ -12,24 +12,12 @@
 
 namespace Nilead\Notification\Message;
 
-use Nilead\ResourceComponent\Model\Traits;
-
 class Message implements MessageInterface
 {
     /**
      * @var int
      */
     protected $id;
-
-    /**
-     * @var string
-     */
-    protected $firstName;
-
-    /**
-     * @var string
-     */
-    protected $lastName;
 
     /**
      * @var array
@@ -57,11 +45,6 @@ class Message implements MessageInterface
     protected $bodyHtml;
 
     /**
-     * Load class MetaData for current model
-     */
-    use Traits\ValidateableTrait;
-
-    /**
      * {@inheritdoc}
      */
     public function setId($id)
@@ -77,38 +60,6 @@ class Message implements MessageInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
     }
 
     /**
@@ -199,6 +150,16 @@ class Message implements MessageInterface
         $this->bodyHtml = $bodyHtml;
 
         return $this;
+    }
+
+    public function setData(array $data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     /**
