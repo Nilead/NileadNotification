@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.5.0",
+        "symfony/event-dispatcher": "~2.6"
     },
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
