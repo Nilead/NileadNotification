@@ -14,5 +14,10 @@
     },
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
