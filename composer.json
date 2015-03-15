@@ -8,6 +8,9 @@
 
         "symfony/event-dispatcher": "~2.6"
     },
+    "repositories": [
+        { "type": "composer", "url": "http://satis.nilead.com/" }
+    ],
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
     },
