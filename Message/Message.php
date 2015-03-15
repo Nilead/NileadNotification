@@ -30,6 +30,16 @@ class Message implements MessageInterface
     protected $to = [];
 
     /**
+     * @var array
+     */
+    protected $replyTo = [];
+
+    /**
+     * @var string
+     */
+    protected $returnPath;
+
+    /**
      * @var string
      */
     protected $subject;
@@ -96,6 +106,42 @@ class Message implements MessageInterface
     public function getTo()
     {
         return $this->to;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setReplyTo($replyTo)
+    {
+        $this->replyTo = (array) $replyTo;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getReplyTo()
+    {
+        return $this->replyTo;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setReturnPath($returnPath)
+    {
+        $this->returnPath = $returnPath;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getReturnPath()
+    {
+        return $this->returnPath;
     }
 
     /**
