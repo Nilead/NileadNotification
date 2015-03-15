@@ -1,12 +1,7 @@
 {
     "name": "nilead/notification",
-    "description": "The simple notification barebone for Nilead project.",
     "authors": [
-        {
-            "name": "Nilead team",
-            "email": "support@nilead.com",
-            "homepage": "http://nilead.com"
-        }
+        { "name": "Nilead Team", "homepage": "http://nilead.com" }
     ],
     "require": {
         "php": ">=5.5",
@@ -18,7 +13,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
