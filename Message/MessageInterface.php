@@ -74,6 +74,34 @@ interface MessageInterface
     public function getTo();
 
     /**
+     * @param array|string $replyTo
+     *
+     * @return self
+     */
+    public function setReplyTo($replyTo);
+
+    /**
+     * Gets the replyTo address(es)
+     *
+     * @return array|string
+     */
+    public function getReplyTo();
+
+    /**
+     * @param string $returnPath
+     *
+     * @return self
+     */
+    public function setReturnPath($returnPath);
+
+    /**
+     * Gets the returnPath address
+     *
+     * @return string
+     */
+    public function getReturnPath();
+
+    /**
      * @param string $subject
      *
      * @return self
@@ -114,6 +142,11 @@ interface MessageInterface
      * @return string
      */
     public function getBodyHtml();
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data);
 
     /**
      * @return array
