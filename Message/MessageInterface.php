@@ -14,6 +14,8 @@ namespace Nilead\Notification\Message;
 
 /**
  * Message interface
+ *
+ * base message interface with the minimal set of requirements
  */
 interface MessageInterface
 {
@@ -32,116 +34,6 @@ interface MessageInterface
      * @return self
      */
     public function setId($id);
-
-    /**
-     * Set sendFrom addresses.
-     *
-     * $from can be either a string or an array
-     * It is up to the consumer to decide how to parse this array
-     * @link http://swiftmailer.org/docs/messages.html
-     *
-     * @param $from
-     *
-     * @return mixed
-     */
-    public function setFrom($from);
-
-    /**
-     * Get the sendFrom addresses
-     *
-     * @return array
-     */
-    public function getFrom();
-
-    /**
-     * Set sendTo addresses.
-     *
-     * $to can be either a string or an array
-     * It is up to the consumer to decide how to parse this array
-     * @link http://swiftmailer.org/docs/messages.html
-     *
-     * @param $to
-     *
-     * @return mixed
-     */
-    public function setTo($to);
-
-    /**
-     * Get the sendTo addresses
-     *
-     * @return mixed
-     */
-    public function getTo();
-
-    /**
-     * @param array|string $replyTo
-     *
-     * @return self
-     */
-    public function setReplyTo($replyTo);
-
-    /**
-     * Gets the replyTo address(es)
-     *
-     * @return array|string
-     */
-    public function getReplyTo();
-
-    /**
-     * @param string $returnPath
-     *
-     * @return self
-     */
-    public function setReturnPath($returnPath);
-
-    /**
-     * Gets the returnPath address
-     *
-     * @return string
-     */
-    public function getReturnPath();
-
-    /**
-     * @param string $subject
-     *
-     * @return self
-     */
-    public function setSubject($subject);
-
-    /**
-     * Gets the message body
-     *
-     * @return string
-     */
-    public function getSubject();
-
-    /**
-     * @param string $body
-     *
-     * @return self
-     */
-    public function setBody($body);
-
-    /**
-     * Gets the message body
-     *
-     * @return string
-     */
-    public function getBody();
-
-    /**
-     * @param string $bodyHtml
-     *
-     * @return self
-     */
-    public function setBodyHtml($bodyHtml);
-
-    /**
-     * Gets the message body (html)
-     *
-     * @return string
-     */
-    public function getBodyHtml();
 
     /**
      * @param array $data

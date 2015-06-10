@@ -16,7 +16,9 @@ use Nilead\Notification\Message\MessageInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * A consumer is a program that mostly waits to receive messages and process them
+ * A consumer is a program that mostly waits to receive messages and send them
+ *
+ * Consumer does not know how to generate the message itself
  */
 interface ConsumerInterface
 {

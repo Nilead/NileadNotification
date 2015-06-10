@@ -1,8 +1,10 @@
 {
     "name": "nilead/notification",
+    "type": "nilead-library",
     "authors": [
         { "name": "Nilead Team", "homepage": "http://nilead.com" }
     ],
+    "license": "MIT",
     "require": {
         "php": ">=5.5",
 
