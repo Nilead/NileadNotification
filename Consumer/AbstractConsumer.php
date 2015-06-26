@@ -54,6 +54,18 @@ abstract class AbstractConsumer implements ConsumerInterface
         return $result;
     }
 
+    public function getConfigurationFormType()
+    {
+        return 'nilead_base_consumer_configuration';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigurationFormTemplate()
+    {
+        return sprintf('NileadNotificationBundle::Consumer/configuration_%s.html.twig', $this->getName());
+    }
 
     /**
      * @param MessageInterface $message
