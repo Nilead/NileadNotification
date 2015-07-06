@@ -47,4 +47,8 @@ interface ConsumerInterface
      * @return EventDispatcherInterface
      */
     public function getEventDispatcher();
+
+    public function getConfigurationFormType();
+
+    public function getConfigurationFormTemplate();
 }
