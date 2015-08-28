@@ -30,16 +30,6 @@ class SmsMessage extends Message implements SmsMessageInterface
     /**
      * @var string
      */
-    protected $accountSid;
-
-    /**
-     * @var string
-     */
-    protected $authToken;
-
-    /**
-     * @var string
-     */
     protected $body;
 
     /**
@@ -94,38 +84,6 @@ class SmsMessage extends Message implements SmsMessageInterface
         $this->body = $body;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAccountSid()
-    {
-        return $this->accountSid;
-    }
-
-    /**
-     * @param string $accountSid
-     */
-    public function setAccountSid($accountSid)
-    {
-        $this->accountSid = $accountSid;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthToken()
-    {
-        return $this->authToken;
-    }
-
-    /**
-     * @param string $authToken
-     */
-    public function setAuthToken($authToken)
-    {
-        $this->authToken = $authToken;
     }
 
 }

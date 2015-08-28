@@ -46,24 +46,4 @@ interface SmsMessageInterface
      * {@inheritdoc}
      */
     public function setBody($body);
-
-    /**
-     * @return string
-     */
-    public function getAccountSid();
-
-    /**
-     * @param string $accountSid
-     */
-    public function setAccountSid($accountSid);
-
-    /**
-     * @return string
-     */
-    public function getAuthToken();
-
-    /**
-     * @param string $authToken
-     */
-    public function setAuthToken($authToken);
 }
