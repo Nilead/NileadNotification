@@ -15,6 +15,7 @@ namespace Nilead\Notification\Consumer;
 
 use Nilead\Notification\Event\ConsumerEvent;
 use Nilead\Notification\Message\MessageInterface;
+use Nilead\NotificationBundle\Form\Type\BaseConsumerConfigurationType;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class AbstractConsumer implements ConsumerInterface
@@ -56,7 +57,7 @@ abstract class AbstractConsumer implements ConsumerInterface
 
     public function getConfigurationFormType()
     {
-        return 'nilead_base_consumer_configuration';
+        return BaseConsumerConfigurationType::class;
     }
 
     /**
