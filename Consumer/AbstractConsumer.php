@@ -13,9 +13,9 @@
 namespace Nilead\Notification\Consumer;
 
 
-use Nilead\Notification\Event\ConsumerEvent;
 use Nilead\Notification\Message\MessageInterface;
 use Nilead\NotificationBundle\Form\Type\BaseConsumerConfigurationType;
+use Nilead\NotificationComponent\Model\HookInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class AbstractConsumer implements ConsumerInterface
@@ -23,38 +23,54 @@ abstract class AbstractConsumer implements ConsumerInterface
     /**
      * @var EventDispatcherInterface
      */
-    protected $dispatcher;
+    //    protected $dispatcher;
+
+    //    /**
+    //     * {@inheritdoc}
+    //     */
+    //    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+    //    {
+    //        $this->dispatcher = $dispatcher;
+    //    }
 
     /**
      * {@inheritdoc}
      */
-    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+    //    public function getEventDispatcher()
+    //    {
+    //        return $this->dispatcher;
+    //    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function consumeRaw($data, HookInterface $hook)
     {
-        $this->dispatcher = $dispatcher;
+        $message = $this->createMessage($data, $hook);
+
+        return $this->consume($message, $hook);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getEventDispatcher()
+    public function consume(MessageInterface $message, HookInterface $hook)
     {
-        return $this->dispatcher;
-    }
+        //        $event = new ConsumerEvent();
+        //        $event->setMessage($message);
 
-    public function consume(MessageInterface $message)
-    {
-        $event = new ConsumerEvent();
-        $event->setMessage($message);
+        //        $this->dispatcher->dispatch($event::PRE_MESSAGE_CONSUME, $event);
 
-        $this->dispatcher->dispatch($event::PRE_MESSAGE_CONSUME, $event);
+        $result = $this->process($message, $hook);
 
-        $result = $this->process($message);
-
-        $this->dispatcher->dispatch($event::POST_MESSAGE_CONSUME, $event);
+        //        $this->dispatcher->dispatch($event::POST_MESSAGE_CONSUME, $event);
 
         return $result;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getConfigurationFormType()
     {
         return BaseConsumerConfigurationType::class;
@@ -70,8 +86,17 @@ abstract class AbstractConsumer implements ConsumerInterface
 
     /**
      * @param MessageInterface $message
+     * @param HookInterface    $hook
      *
      * @return mixed
      */
-    abstract protected function process(MessageInterface $message);
+    abstract protected function process(MessageInterface $message, HookInterface $hook);
+
+    /**
+     * @param               $data
+     * @param HookInterface $hook
+     *
+     * @return MessageInterface
+     */
+    abstract protected function createMessage($data, HookInterface $hook);
 }

@@ -13,6 +13,7 @@
 namespace Nilead\Notification\Consumer;
 
 use Nilead\Notification\Message\MessageInterface;
+use Nilead\NotificationComponent\Model\HookInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -30,25 +31,45 @@ interface ConsumerInterface
     public function getName();
 
     /**
-     * @param MessageInterface $message
+     * @param mixed         $data
+     * @param HookInterface $hook
      *
      * @return boolean
      */
-    public function consume(MessageInterface $message);
+    public function consumeRaw($data, HookInterface $hook);
 
     /**
-     * @param EventDispatcherInterface $dispatcher
+     * @param MessageInterface $message
+     * @param HookInterface    $hook
      *
-     * @return self
+     * @return boolean
      */
-    public function setEventDispatcher(EventDispatcherInterface $dispatcher);
+    public function consume(MessageInterface $message, HookInterface $hook);
+
+    //    /**
+    //     * @param EventDispatcherInterface $dispatcher
+    //     *
+    //     * @return self
+    //     */
+    //    public function setEventDispatcher(EventDispatcherInterface $dispatcher);
+    //
+    //    /**
+    //     * @return EventDispatcherInterface
+    //     */
+    //    public function getEventDispatcher();
 
     /**
-     * @return EventDispatcherInterface
+     * @return array
      */
-    public function getEventDispatcher();
+    public function getInput();
 
+    /**
+     * @return string
+     */
     public function getConfigurationFormType();
 
+    /**
+     * @return string
+     */
     public function getConfigurationFormTemplate();
 }

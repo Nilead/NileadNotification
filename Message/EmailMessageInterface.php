@@ -42,6 +42,8 @@ interface EmailMessageInterface extends MessageInterface
      * It is up to the consumer to decide how to parse this array
      * @link http://swiftmailer.org/docs/messages.html
      *
+     * ['receiver@domain.org', 'other@domain.org' => 'A name']
+     *
      * @param $from
      *
      * @return mixed
