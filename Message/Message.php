@@ -20,6 +20,21 @@ class Message implements MessageInterface
     protected $id;
 
     /**
+     * @var array
+     */
+    protected $data = [];
+
+    /**
+     * @var bool
+     */
+    protected $propagate = true;
+
+    /**
+     * @var bool
+     */
+    protected $queue = true;
+
+    /**
      * {@inheritdoc}
      */
     public function setId($id)
@@ -37,14 +52,14 @@ class Message implements MessageInterface
         return $this->id;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setData(array $data)
     {
-        foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
+        $this->data = $data;
+
+        return $this;
     }
 
     /**
@@ -52,6 +67,66 @@ class Message implements MessageInterface
      */
     public function getData()
     {
-        return get_object_vars($this);
+        return $this->data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function has($key)
+    {
+        return array_key_exists($key, $this->data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function get($key, $default = null)
+    {
+        return array_key_exists($key, $this->data) ? $this->data[$key] : $default;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function set($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function stopPropagate()
+    {
+        $this->propagate = false;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPropagate()
+    {
+        return $this->propagate;
+    }
+
+    /**
+     * @return self
+     */
+    public function skipQueue()
+    {
+        $this->queue = false;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canQueue()
+    {
+        return $this->queue;
     }
 }

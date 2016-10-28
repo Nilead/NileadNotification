@@ -37,6 +37,8 @@ interface MessageInterface
 
     /**
      * @param array $data
+     *
+     * @return self
      */
     public function setData(array $data);
 
@@ -44,4 +46,47 @@ interface MessageInterface
      * @return array
      */
     public function getData();
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    public function has($key);
+
+    /**
+     * @param string $key
+     * @param null   $default
+     *
+     * @return mixed
+     */
+    public function get($key, $default = null);
+
+    /**
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return mixed
+     */
+    public function set($key, $value);
+
+    /**
+     * @return self
+     */
+    public function stopPropagate();
+
+    /**
+     * @return bool
+     */
+    public function getPropagate();
+
+    /**
+     * @return self
+     */
+    public function skipQueue();
+
+    /**
+     * @return bool
+     */
+    public function canQueue();
 }

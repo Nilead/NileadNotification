@@ -174,22 +174,4 @@ class EmailMessage extends Message implements MessageInterface
 
         return $this;
     }
-
-    public function setData(array $data)
-    {
-        foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getData()
-    {
-        return get_object_vars($this);
-    }
 }

@@ -14,7 +14,6 @@ namespace Nilead\Notification\Consumer;
 
 use Nilead\Notification\Message\MessageInterface;
 use Nilead\NotificationComponent\Model\HookInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * A consumer is a program that mostly waits to receive messages and send them
@@ -31,32 +30,12 @@ interface ConsumerInterface
     public function getName();
 
     /**
-     * @param mixed         $data
-     * @param HookInterface $hook
-     *
-     * @return boolean
-     */
-    public function consumeRaw($data, HookInterface $hook);
-
-    /**
-     * @param MessageInterface $message
      * @param HookInterface    $hook
+     * @param MessageInterface $message
      *
      * @return boolean
      */
-    public function consume(MessageInterface $message, HookInterface $hook);
-
-    //    /**
-    //     * @param EventDispatcherInterface $dispatcher
-    //     *
-    //     * @return self
-    //     */
-    //    public function setEventDispatcher(EventDispatcherInterface $dispatcher);
-    //
-    //    /**
-    //     * @return EventDispatcherInterface
-    //     */
-    //    public function getEventDispatcher();
+    public function consume(HookInterface $hook, MessageInterface $message);
 
     /**
      * @return array
