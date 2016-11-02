@@ -8,7 +8,9 @@
     "require": {
         "php": ">=5.5",
 
-        "symfony/event-dispatcher": "3.x"
+        "symfony/event-dispatcher": "3.x",
+        "doctrine/inflector": "@stable",
+        "nilead/exception": "dev-develop"
     },
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
