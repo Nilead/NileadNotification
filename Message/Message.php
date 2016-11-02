@@ -12,6 +12,9 @@
 
 namespace Nilead\Notification\Message;
 
+use Doctrine\Common\Inflector\Inflector;
+use Nilead\Exception\Runtime\Common\UnsupportedOperationException;
+
 class Message implements MessageInterface
 {
     /**
@@ -128,5 +131,23 @@ class Message implements MessageInterface
     public function canQueue()
     {
         return $this->queue;
+    }
+
+    /**
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return mixed|null
+     * @throws UnsupportedOperationException
+     */
+    public function __call($method, $arguments)
+    {
+        $name = Inflector::tableize($method);
+
+        if ('get_' === substr($name, 0, 4)) {
+            return $this->get(substr($method, 4));
+        }
+
+        throw new UnsupportedOperationException('Bad method call', 1);
     }
 }
