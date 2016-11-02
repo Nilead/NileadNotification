@@ -145,7 +145,17 @@ class Message implements MessageInterface
         $name = Inflector::tableize($method);
 
         if ('get_' === substr($name, 0, 4)) {
-            return $this->get(substr($method, 4));
+            $key = substr($method, 3);
+
+            if($this->has($realKey = Inflector::camelize($key))) {
+                return $this->get($realKey);
+            }
+
+            if($this->has($realKey = Inflector::tableize($key))) {
+                return $this->get($realKey);
+            }
+
+            return null;
         }
 
         throw new UnsupportedOperationException('Bad method call', 1);
