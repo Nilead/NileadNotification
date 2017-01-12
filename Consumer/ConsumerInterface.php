@@ -13,7 +13,7 @@
 namespace Nilead\Notification\Consumer;
 
 use Nilead\Notification\Message\MessageInterface;
-use Nilead\NotificationComponent\Model\HookInterface;
+use Nilead\Notification\Hook\HookInterface;
 
 /**
  * A consumer is a program that mostly waits to receive messages and send them
@@ -32,10 +32,10 @@ interface ConsumerInterface
     /**
      * @param HookInterface    $hook
      * @param MessageInterface $message
-     *
+     * @param array            $configurations
      * @return boolean
      */
-    public function consume(HookInterface $hook, MessageInterface $message);
+    public function consume(HookInterface $hook, MessageInterface $message, array $configurations = []);
 
     /**
      * @return array

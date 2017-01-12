@@ -28,6 +28,11 @@ class Message implements MessageInterface
     protected $data = [];
 
     /**
+     * @var string
+     */
+    protected $current = '';
+
+    /**
      * @var bool
      */
     protected $propagate = true;
@@ -76,6 +81,24 @@ class Message implements MessageInterface
     /**
      * {@inheritdoc}
      */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function has($key)
     {
         return array_key_exists($key, $this->data);
@@ -95,6 +118,10 @@ class Message implements MessageInterface
     public function set($key, $value)
     {
         $this->data[$key] = $value;
+
+        $this->setCurrent($key);
+
+        return $this;
     }
 
     /**

@@ -48,6 +48,22 @@ interface MessageInterface
     public function getData();
 
     /**
+     * Get the current level of data
+     *
+     * @return string
+     */
+    public function getCurrent();
+
+    /**
+     * Set the current level of data
+     *
+     * @param string $current
+     *
+     * @return self
+     */
+    public function setCurrent($current);
+
+    /**
      * @param string $key
      *
      * @return mixed
@@ -66,7 +82,7 @@ interface MessageInterface
      * @param string $key
      * @param mixed  $value
      *
-     * @return mixed
+     * @return self
      */
     public function set($key, $value);
 
