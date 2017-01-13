@@ -73,5 +73,5 @@ abstract class AbstractConsumer implements ConsumerInterface
      *
      * @return mixed
      */
-    abstract protected function process(MessageInterface $message);
+    // abstract protected function process(MessageInterface $message);
 }
