@@ -38,9 +38,18 @@ interface ConsumerInterface
     public function consume(HookInterface $hook, MessageInterface $message, array $configurations = []);
 
     /**
+     * @param array $hookConfigurations hook configurations
+     *
      * @return array
      */
-    public function getInput();
+    public function getInput(array $hookConfigurations);
+
+    /**
+     * @param array $hookConfigurations hook configurations
+     *
+     * @return mixed
+     */
+    public function getOutput(array $hookConfigurations);
 
     /**
      * @return string
