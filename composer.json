@@ -10,7 +10,7 @@
 
         "symfony/event-dispatcher": "3.x",
         "doctrine/inflector": "@stable",
-        "nilead/exception": "1.0.x-dev"
+        "nilead/exception": "dev-develop"
     },
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
