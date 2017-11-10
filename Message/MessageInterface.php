@@ -48,6 +48,18 @@ interface MessageInterface
     public function getData();
 
     /**
+     * @return array
+     */
+    public function getMetadata();
+
+    /**
+     * @param array $metadata
+     *
+     * @return self
+     */
+    public function setMetadata(array $metadata);
+
+    /**
      * Get the current level of data
      *
      * @return string
