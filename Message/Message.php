@@ -28,6 +28,11 @@ class Message implements MessageInterface
     protected $data = [];
 
     /**
+     * @var array
+     */
+    protected $metadata = [];
+
+    /**
      * @var string
      */
     protected $current = '';
@@ -76,6 +81,24 @@ class Message implements MessageInterface
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetadata(array $metadata)
+    {
+        $this->metadata = $metadata;
+
+        return $this;
     }
 
     /**
@@ -162,7 +185,7 @@ class Message implements MessageInterface
 
     /**
      * @param string $method
-     * @param array $arguments
+     * @param array  $arguments
      *
      * @return mixed|null
      * @throws UnsupportedOperationException
@@ -174,11 +197,11 @@ class Message implements MessageInterface
         if ('get_' === substr($name, 0, 4)) {
             $key = substr($method, 3);
 
-            if($this->has($realKey = Inflector::camelize($key))) {
+            if ($this->has($realKey = Inflector::camelize($key))) {
                 return $this->get($realKey);
             }
 
-            if($this->has($realKey = Inflector::tableize($key))) {
+            if ($this->has($realKey = Inflector::tableize($key))) {
                 return $this->get($realKey);
             }
 
