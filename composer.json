@@ -7,10 +7,8 @@
     "license": "MIT",
     "require": {
         "php": ">=5.5",
-
         "symfony/event-dispatcher": "3.x",
-        "doctrine/inflector": "@stable",
-        "nilead/exception": "dev-develop"
+        "doctrine/inflector": "@stable"
     },
     "autoload": {
         "psr-4": { "Nilead\\Notification\\": "" }
