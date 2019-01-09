@@ -12,49 +12,19 @@
 
 namespace Nilead\Notification\Message;
 
+/**
+ * Class EmailMessage
+ *
+ * @package Nilead\Notification\Message
+ */
 class EmailMessage extends Message implements EmailMessageInterface
 {
-    /**
-     * @var array
-     */
-    protected $from = [];
-
-    /**
-     * @var array
-     */
-    protected $to = [];
-
-    /**
-     * @var array
-     */
-    protected $replyTo = [];
-
-    /**
-     * @var string
-     */
-    protected $returnPath;
-
-    /**
-     * @var string
-     */
-    protected $subject;
-
-    /**
-     * @var string
-     */
-    protected $body;
-
-    /**
-     * @var string
-     */
-    protected $bodyHtml;
-
     /**
      * {@inheritdoc}
      */
     public function setFrom($from)
     {
-        $this->from = (array) $from;
+        $this->set('from', (array) $from);
 
         return $this;
     }
@@ -64,7 +34,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getFrom()
     {
-        return $this->from;
+        return $this->get('from', []);
     }
 
     /**
@@ -72,7 +42,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setTo($to)
     {
-        $this->to = (array) $to;
+        $this->set('to', (array) $to);
 
         return $this;
     }
@@ -82,7 +52,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getTo()
     {
-        return $this->to;
+        return $this->get('to', []);
     }
 
     /**
@@ -90,7 +60,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setReplyTo($replyTo)
     {
-        $this->replyTo = (array) $replyTo;
+        $this->set('replyTo', (array) $replyTo);
 
         return $this;
     }
@@ -100,7 +70,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getReplyTo()
     {
-        return $this->replyTo;
+        return $this->get('replyTo', []);
     }
 
     /**
@@ -108,7 +78,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setReturnPath($returnPath)
     {
-        $this->returnPath = $returnPath;
+        $this->set('returnPath', $returnPath);
 
         return $this;
     }
@@ -118,7 +88,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getReturnPath()
     {
-        return $this->returnPath;
+        return $this->get('returnPath');
     }
 
     /**
@@ -126,7 +96,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getSubject()
     {
-        return $this->subject;
+        return $this->get('subject');
     }
 
     /**
@@ -134,7 +104,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setSubject($subject)
     {
-        $this->subject = $subject;
+        $this->set('subject', $subject);
 
         return $this;
     }
@@ -144,7 +114,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getBody()
     {
-        return $this->body;
+        return $this->get('body');
     }
 
     /**
@@ -152,7 +122,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setBody($body)
     {
-        $this->body = $body;
+        $this->set('body', $body);
 
         return $this;
     }
@@ -162,7 +132,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function getBodyHtml()
     {
-        return $this->bodyHtml;
+        return $this->get('bodyHtml');
     }
 
     /**
@@ -170,7 +140,7 @@ class EmailMessage extends Message implements EmailMessageInterface
      */
     public function setBodyHtml($bodyHtml)
     {
-        $this->bodyHtml = $bodyHtml;
+        $this->set('bodyHtml', $bodyHtml);
 
         return $this;
     }
