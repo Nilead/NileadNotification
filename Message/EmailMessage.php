@@ -12,7 +12,7 @@
 
 namespace Nilead\Notification\Message;
 
-class EmailMessage extends Message implements MessageInterface
+class EmailMessage extends Message implements EmailMessageInterface
 {
     /**
      * @var array
