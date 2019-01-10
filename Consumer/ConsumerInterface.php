@@ -54,10 +54,5 @@ interface ConsumerInterface
     /**
      * @return string
      */
-    public function getConfigurationFormType();
-
-    /**
-     * @return string
-     */
     public function getConfigurationFormTemplate();
 }
